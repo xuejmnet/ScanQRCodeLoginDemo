@@ -46,7 +46,7 @@ namespace ScanQRCodeLoginSample
             services.AddSignalR();
             services.AddCors(options =>
             {
-                options.AddPolicy("SignalrCore",
+                options.AddPolicy("SignalrPolicy",
                     policy => policy.AllowAnyOrigin()
                                     .AllowAnyHeader()
                                     .AllowAnyMethod());
@@ -69,7 +69,7 @@ namespace ScanQRCodeLoginSample
 
             //跨域支持
             //跨域支持
-            app.UseCors("SignalrCore");
+            app.UseCors("SignalrPolicy");
             app.UseSignalR(routes =>
             {
                 routes.MapHub<SignalrHubs>("/signalrHubs");

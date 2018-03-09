@@ -28,7 +28,8 @@ namespace ScanQRCodeLoginSample.Controllers
         public async Task<IActionResult> Send2FontRequest([FromBody]ScanQRCodeDTO qRCodeDTO)
         {
             var guid = Guid.NewGuid();
-            scanQRCodeDics[guid] = qRCodeDTO.Name;
+            //scanQRCodeDics[guid] = qRCodeDTO.Name;
+            scanQRCodeDics[guid] = User.Identity.Name;
             await _hubContext.Clients.Client(qRCodeDTO.ConnectionID).SendAsync("request2Login",guid);
             return Ok();
         }
