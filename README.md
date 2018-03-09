@@ -1,0 +1,3 @@
+# ScanQRCodeLoginDemo
+aspnetcore-signalr-cookie-jwt-scanqrcodelogin
+vs2017打开,web设置控制台托管,启动mobileapp模拟手机端,web页面进入login赋值二维码模拟手机扫描,控制台输入二维码,登录页面也同时成功
