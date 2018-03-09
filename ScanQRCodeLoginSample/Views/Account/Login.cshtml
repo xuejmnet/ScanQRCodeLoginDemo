@@ -1,0 +1,109 @@
+﻿
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<h2>@ViewData["Title"]</h2>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                <h4>Use a local account to log in.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="RememberMe">
+                            <input asp-for="RememberMe" />
+                            @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Log in</button>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <a asp-action="ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>Use another service to log in.</h4>
+            <hr />
+
+            <div id="qrcode">
+
+            </div>
+            <input type="text" id="txtqrCode" />
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
+    <script src="~/js/jquery/jquery.qrcode.min.js"></script>
+    <script src="~/scripts/signalr.js"></script>
+    @*<script type="text/javascript" src="scripts/signalr.js"></script>*@
+    @*<script src="~/js/signalr-client.js"></script>*@
+    <script>
+        $(function () {
+
+            let hubUrl = 'http://localhost:5000/signalrHubs';
+            let httpConnection = new signalR.HttpConnection(hubUrl);
+            let hubConnection = new signalR.HubConnection(httpConnection);
+            hubConnection.start().then(function () {
+                $("#txtqrCode").val(hubConnection.connection.connectionId);
+                //alert(hubConnection.connection.connectionId);
+                $('#qrcode').qrcode({
+                    render: "table", // 渲染方式有table方式和canvas方式
+                    width: 190,   //默认宽度
+                    height: 190, //默认高度
+                    text: hubConnection.connection.connectionId, //二维码内容
+                    typeNumber: -1,   //计算模式一般默认为-1
+                    correctLevel: 3, //二维码纠错级别
+                    background: "#ffffff",  //背景颜色
+                    foreground: "#000000"  //二维码颜色
+                });
+            });
+            hubConnection.on('request2Login', function (guid) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Account/ScanQRCodeLogin",
+                    data: { uid: guid },
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        window.location.href = response.url;
+                    },
+                    error: function () {
+                        window.location.reload();
+                    }
+                });
+
+            });
+
+
+        })
+    </script>
+}
