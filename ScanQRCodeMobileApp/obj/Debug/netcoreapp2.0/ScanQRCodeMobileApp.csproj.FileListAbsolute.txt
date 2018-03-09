@@ -1,0 +1,14 @@
+C:\Projects\person\netCore\ScanQRCodeMobileApp\bin\Debug\netcoreapp2.0\ScanQRCodeMobileApp.deps.json
+C:\Projects\person\netCore\ScanQRCodeMobileApp\bin\Debug\netcoreapp2.0\ScanQRCodeMobileApp.runtimeconfig.json
+C:\Projects\person\netCore\ScanQRCodeMobileApp\bin\Debug\netcoreapp2.0\ScanQRCodeMobileApp.runtimeconfig.dev.json
+C:\Projects\person\netCore\ScanQRCodeMobileApp\bin\Debug\netcoreapp2.0\ScanQRCodeMobileApp.dll
+C:\Projects\person\netCore\ScanQRCodeMobileApp\bin\Debug\netcoreapp2.0\ScanQRCodeMobileApp.pdb
+C:\Projects\person\netCore\ScanQRCodeMobileApp\bin\Debug\netcoreapp2.0\Newtonsoft.Json.dll
+C:\Projects\person\netCore\ScanQRCodeMobileApp\bin\Debug\netcoreapp2.0\Newtonsoft.Json.xml
+C:\Projects\person\netCore\ScanQRCodeMobileApp\obj\Debug\netcoreapp2.0\ScanQRCodeMobileApp.csprojResolveAssemblyReference.cache
+C:\Projects\person\netCore\ScanQRCodeMobileApp\obj\Debug\netcoreapp2.0\ScanQRCodeMobileApp.csproj.CoreCompileInputs.cache
+C:\Projects\person\netCore\ScanQRCodeMobileApp\obj\Debug\netcoreapp2.0\ScanQRCodeMobileApp.AssemblyInfoInputs.cache
+C:\Projects\person\netCore\ScanQRCodeMobileApp\obj\Debug\netcoreapp2.0\ScanQRCodeMobileApp.AssemblyInfo.cs
+C:\Projects\person\netCore\ScanQRCodeMobileApp\obj\Debug\netcoreapp2.0\ScanQRCodeMobileApp.csproj.CopyComplete
+C:\Projects\person\netCore\ScanQRCodeMobileApp\obj\Debug\netcoreapp2.0\ScanQRCodeMobileApp.dll
+C:\Projects\person\netCore\ScanQRCodeMobileApp\obj\Debug\netcoreapp2.0\ScanQRCodeMobileApp.pdb
